@@ -9,6 +9,7 @@ import time
 from utilities import ReadConfigurations
 from utilities import ReadConfigurations
 
+
 @pytest.fixture()
 def setup_and_teardown(request):
     # browser = ReadConfigurations.read_configurations("basic info","browser")

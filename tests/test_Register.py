@@ -16,12 +16,12 @@ class TestRegister:
         home_page.click_on_my_account_drop_menu()
         home_page.select_register_option()
         register_page=RegisterPage(self.driver)
-        register_page.enter_first_name("shashi")
-        register_page.enter_last_name("sharan")
+        register_page.enter_first_name("ram1212")
+        register_page.enter_last_name("ram2121")
         register_page.enter_email(self.generate_email_with_time_stamp())
-        register_page.enter_telephone("9898989898")
-        register_page.enter_password("155113412")
-        register_page.enter_password_confirm("155113412")
+        register_page.enter_telephone("9875431222")
+        register_page.enter_password("155113400")
+        register_page.enter_password_confirm("155113400")
         register_page.select_agree_checkbox_field()
         register_page.click_on_continue_button()
         account_success_page=AccountSuccessPage(self.driver)
@@ -40,9 +40,15 @@ class TestRegister:
         # self.driver.find_element(By.XPATH, "//input[@value='Continue']").click()
         time.sleep(2)
         expected_heading_text = 'Your Account Has Been Created!'
-        time.sleep(2)
-        # actual_heading_text = self.driver.find_element(By.XPATH, "//div[@id='content']/h1").text
-        assert account_success_page.account_creation_message_xpath.__eq__(expected_heading_text)
+        # expected_heading_text='Warning: E-Mail Address is already registered!'
+        # expected_heading_text='If you already have an account with us, please login at the '
+
+        # actual_heading_text =self.driver.find_element(By.XPATH,"//div[@class='alert alert-danger alert-dismissible']").text
+        # time.sleep(2)
+        actual_heading_text = self.driver.find_element(By.XPATH, "//div[@id='content']/h1").text
+        print(actual_heading_text)
+        assert actual_heading_text.__eq__(expected_heading_text)
+        # assert account_success_page.account_creation_message_xpath.__eq__(expected_heading_text)
 
     def test_Register_with_all_fields(self):
         home_page=HomePage(self.driver)

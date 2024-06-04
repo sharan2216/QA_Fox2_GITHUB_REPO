@@ -1,0 +1,3 @@
+Hello world its great to learn Git
+Adding a new line
+Version 1-old version

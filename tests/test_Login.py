@@ -28,17 +28,19 @@ class TestLogin:
         # self.driver.find_element(By.XPATH, "//input[@value='Login']").click()
         time.sleep(2)
         account_page=AccountPage(self.driver)
-        assert account_page.display_status_of_edit_your_account_information_option()
-        # actual_text = self.driver.find_element(By.XPATH, "//a[text()='Edit your account information']").text
-        # expected_text = "Edit your account information"
-        # assert actual_text.__eq__(expected_text)
+        # assert account_page.display_status_of_edit_your_account_information_option()
+        # assert account_page.retrieve_warning_message().__contains__(expected_warning_message)
+        actual_text = self.driver.find_element(By.XPATH, "//a[text()='Edit your account information']").text
+        expected_text = "Edit your account information"
+        assert actual_text.__eq__(expected_text)
 
     def test_login_with_invalid_email_and_valid_password(self):
         home_page=HomePage(self.driver)
         home_page.click_on_my_account_drop_menu()
         home_page.select_login_option()
         login_page = LoginPage(self.driver)
-        login_page.enter_email_address(self.generate_email_with_time_stamp)
+        login_page.enter_email_address(self.generate_email_with_time_stamp())
+        # self.driver.find_element(By.ID, "input-email").send_keys(self.generate_email_with_time_stamp())
         time.sleep(2)
         login_page.enter_password("155113412")
         time.sleep(2)
